@@ -12,6 +12,8 @@ public class Peg {
     public Peg(int peg, int num) {
         pegNum = peg;
         numDiscs = num;
+        discs = new int[num];
+        count = 0;
     }
 
     public int getPegNum() {
