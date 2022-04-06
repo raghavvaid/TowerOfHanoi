@@ -29,22 +29,20 @@ public class Peg {
         if (count == 0) {
             discs[0] = whichOne;
             count++;
+            return true;
         }
-        else if (whichOne > discs[count-1]){
+        else if (whichOne < discs[count-1]){
             discs[count] = whichOne;
             count++;
+            return true;
         }
         else{
             System.out.println("Can't do that");
             return false;
         }
-        return true;
     }
 
     public int popDisc() {
-        if (count == 0) {
-            return 0;
-        }
         int removed = discs[count-1];
         discs[count-1] = 0;
         count --;

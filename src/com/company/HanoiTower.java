@@ -7,7 +7,15 @@ public class HanoiTower {
     private int numDiscs;
 
     public HanoiTower(int num) {
+        peg1 = new Peg(1, num);
+        peg2 = new Peg(2, num);
+        peg3 = new Peg(3, num);
         numDiscs = num;
+
+        for (int i = num; i > 0; i--){
+            peg1.addDisc(i);
+        }
+
     }
 
     public void solveTower() {
@@ -15,7 +23,14 @@ public class HanoiTower {
     }
 
     private void moveTower(Peg startPeg, Peg endPeg, Peg extraPeg, int numtoMove) {
-        // TODO move discs(number input) from the start peg to the end peg
+        if (numtoMove == 1){
+            startPeg.moveTopDisc(endPeg);
+        }
+        else{
+            moveTower(startPeg, extraPeg, endPeg, numtoMove-1);
+            startPeg.moveTopDisc(endPeg);
+            moveTower(extraPeg, endPeg, startPeg, numtoMove-1);
+        }
 
     }
     public static void main(String[] args) {
